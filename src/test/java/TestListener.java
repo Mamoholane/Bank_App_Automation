@@ -4,6 +4,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utils.ExtentReportManager;
+import utils.ScreenshotHelper;
 
 public class TestListener implements ITestListener {
     private ExtentTest test;
@@ -30,6 +31,7 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         test.log(Status.FAIL, "Test failed: " + result.getMethod().getMethodName());
         System.out.println("Test failed: " + result.getMethod().getMethodName());
+
     }
 
     @Override

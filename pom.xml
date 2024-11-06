@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>DemoBlaze_Automation</artifactId>
+    <artifactId>Bank_App_Automation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

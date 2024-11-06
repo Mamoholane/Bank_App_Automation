@@ -28,6 +28,7 @@ public class AccountPage {
 
     @FindBy(id = "accountSelect")
     public WebElement accountsSelect;
+    private String accountType;
 
 
     public AccountPage(WebDriver driver) {
@@ -38,14 +39,14 @@ public class AccountPage {
 
     public void clickOnDepositTab() {
         new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(depositTab)).click();
+                .until(ExpectedConditions.elementToBeClickable(depositTab));
         depositTab.click();
     }
 
-    public void enterDepositAmount()  {
+    public void enterDepositAmount(String amount) {
         new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(amountField)).click();
-        amountField.sendKeys("1500");
+                .until(ExpectedConditions.elementToBeClickable(amountField));
+        amountField.sendKeys(amount);
     }
 
     public  void clickOnDepositButton(){
@@ -59,7 +60,7 @@ public class AccountPage {
         successMessageText.isDisplayed();
     }
 
-    public void depositOnEachAccount() {
+    public void depositOnEachAccount(String amount) throws InterruptedException {
         // Wait for the accounts dropdown to be clickable and click it
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(accountsSelect)).click();
@@ -80,13 +81,19 @@ public class AccountPage {
             for (WebElement option : options) {
                 // Select the option by its visible text
                 dropdown.selectByVisibleText(option.getText());
+                Thread.sleep(1000);
 
                 // Perform the deposit operations
                 clickOnDepositTab();
-                enterDepositAmount();
+                enterDepositAmount(amount);
+                Thread.sleep(2000);
                 clickOnDepositButton();
                 successMessage();
             }
         }
+    }
+
+    public void selectAccount(String accountType) {
+        this.accountType = accountType;
     }
 }

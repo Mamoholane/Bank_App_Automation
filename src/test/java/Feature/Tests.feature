@@ -1,7 +1,6 @@
 Feature: Testing account
 
   #The are
-
   Background:
     Given User is on login page
     When User click customer login
@@ -9,12 +8,20 @@ Feature: Testing account
     And User clicks on login button
     Then User is logged in successfully
 
-  Scenario: Deposit is successful
+  Scenario Outline: Deposit is successful
     Given User is logged in successfully
     When  User select deposit
-    And User enter amount
+    And User enter "<Amount>"
     Then User deposit successfully
 
-  Scenario: Deposit to all accounts
+    Examples:
+      | Amount |
+      | 1500   |
+
+  Scenario Outline: Deposit to all accounts
     Given User is logged in successfully
-    Then User deposit money to different accounts
+    Then User deposit "<Amount>" to different accounts
+
+    Examples:
+      | Amount |
+      | 1500   |
