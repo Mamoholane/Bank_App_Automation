@@ -1,5 +1,5 @@
 # Bank_App_Automation
-* This will explain to us how the project works 
+* This will explain how the project works 
 ## Purpose of this project 
 * We are testing http://www.way2automation.com/angularjs-protractor/banking/#/login website end to end using Selenium WebDriver.  It is a website built for users to practice and learn automation 
 ## Software required for this project 
